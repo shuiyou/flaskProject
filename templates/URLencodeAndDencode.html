@@ -1,0 +1,93 @@
+{% include 'navbar.html' %}
+{% block head %}
+    {% block styles %}
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            function selectIdType(){
+                var selectIdtype =$('#selectId');
+                var idType = $('#idType');
+                switch (selectIdtype.val()){
+                    case 'id_card_no':
+                        idType.val('id_card_no');
+                        break;
+                    case 'credit_code':
+                        idType.val('credit_code');
+                        break;
+                    case 'reg_no':
+                        idType.val('reg_no');
+                        break;
+                    case 'other':
+                        idType.val('other');
+                        break;
+                    default:
+                        idType.val('');
+
+                }
+
+            }
+            function changeIfCashier(){
+                var cashierVal =$('#ifCashierVal');
+                var ifCashier = $('#ifCashier');
+                switch (cashierVal.val()){
+                    case '1':
+                        ifCashier.val('1');
+                        break;
+                    case '0':
+                        ifCashier.val('0');
+                        break;
+                    default:
+                        ifCashier.val('');
+
+                }
+            }
+
+            function changeflowTypeVal(){
+                var flowTypeVal =$('#flowTypeVal');
+                var flowType = $('#flowType');
+                switch (flowTypeVal.val()){
+                    case '3':
+                        flowType.val('3');
+                        break;
+                    case '4':
+                        flowType.val('4');
+                        break;
+                    case '5':
+                        flowType.val('5');
+                        break;
+                    default:
+                        ifCashier.val('');
+
+                }
+            }
+
+        </script>
+    {% endblock styles %}
+{% endblock head %}
+{% block body %}
+    <div style="position: relative; margin-top: 60PX; margin-bottom: 50PX"
+         class="container">
+        <table class="table table-striped" cellpadding="5" align="center"
+               style="word-break: break-all;">
+            <tr>
+                <th class="table table-striped"><input tpye="text"
+                                                       name="encodeContent" id="encodeContent" placeholder="请输入需要编码的内容"
+                                                       value="" style = "width:85%"> <input type="button" value="UrlEncode编码"
+                                                                                            onclick="encode()"></th>
+            </tr>
+            <tr>
+                <th id="showEncodeContent" class="table table-striped"></th>
+            </tr>
+            <tr>
+                <th class="table table-striped"><input tpye="text"
+                                                       name="decodeContent" id="decodeContent" placeholder="请输入需要解码的内容"
+                                                       value="" style = "width:85%"> <input type="button" value="UrlDecode解码"
+                                                                                            onclick="decode()"></th>
+            </tr>
+            <tr>
+                <th id="shwoDecodeContent" class="table table-striped"></th>
+            </tr>
+        </table>
+    </div>
+{% endblock body %}

@@ -1,0 +1,114 @@
+{% include 'navbar.html' %}
+{% block head %}
+    {% block styles %}
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            function selectIdType(){
+                var selectIdtype =$('#selectId');
+                var idType = $('#idType');
+                switch (selectIdtype.val()){
+                    case 'id_card_no':
+                        idType.val('id_card_no');
+                        break;
+                    case 'credit_code':
+                        idType.val('credit_code');
+                        break;
+                    case 'reg_no':
+                        idType.val('reg_no');
+                        break;
+                    case 'other':
+                        idType.val('other');
+                        break;
+                    default:
+                        idType.val('');
+
+                }
+
+            }
+            function changeIfCashier(){
+                var cashierVal =$('#ifCashierVal');
+                var ifCashier = $('#ifCashier');
+                switch (cashierVal.val()){
+                    case '1':
+                        ifCashier.val('1');
+                        break;
+                    case '0':
+                        ifCashier.val('0');
+                        break;
+                    default:
+                        ifCashier.val('');
+
+                }
+            }
+
+            function changeflowTypeVal(){
+                var flowTypeVal =$('#flowTypeVal');
+                var flowType = $('#flowType');
+                switch (flowTypeVal.val()){
+                    case '3':
+                        flowType.val('3');
+                        break;
+                    case '4':
+                        flowType.val('4');
+                        break;
+                    case '5':
+                        flowType.val('5');
+                        break;
+                    default:
+                        ifCashier.val('');
+
+                }
+            }
+
+        </script>
+    {% endblock styles %}
+{% endblock head %}
+{% block body %}
+    <div id="parseFlowFile">
+        <div class="h4" >解析潍坊本行流水</div>
+        <div style="width: 800px">
+            <div>
+                <form  target="_blank"  class="form-horizontal" role="form" enctype="multipart/form-data" name="login" action="/handleFile" method="post" accept-charset="utf-8"  >
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>
+                                <div class="col-sm-10">参数名称</div>
+                            </th>
+                            <th>
+                                <div class="col-sm-10">参数值</div>
+                            </th>
+                            <th>
+                                <div class="col-sm-10">按钮</div>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><label class="col-sm-2 control-label">file:</label></td>
+                            <td>
+                                <input class="col-sm-10" name="" type="file" id="formFile" value="">
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div class="col-sm-10">
+                                    <button type="submit" class = "btn btn-primary" style="width: 280px;text-align: center">发送请求</button>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock body %}
